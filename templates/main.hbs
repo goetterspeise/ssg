@@ -6,8 +6,7 @@
     <meta name="description" content="{{recipe-name}}">
     <title>{{recipe-name}}</title>
     <!-- Css -->
-    <link rel="stylesheet" type="text/css" href="css/pure-min.css">
-    <link rel="stylesheet" type="text/css" href="css/grids-responsive-min.css">
+    <link rel="stylesheet" type="text/css" href="css/picnic.min.css">
     <!-- Photo Swype Css -->
     <link rel="stylesheet" type="text/css" href="css/photoswipe.css">
     <link rel="stylesheet" type="text/css" href="css/default-skin/default-skin.css">
@@ -20,28 +19,29 @@
 </head>
 <body>
 
-  <div class="pure-g">
+  <div class="flex">
 
       <!-- Header -->
       {{> header}}
       <!-- Header end -->
 
-      <!-- Helper Grid for large Screensize -->
-      <div class="pure-u-md-1-5"></div>
+      <!-- helper div left -->
+        <div class=""></div>
+      <!-- helper div left -->
 
       <!-- Main -->
-      <div class="pure-u-1 pure-u-md-3-5 main">
+      <div class="full half-800 main">
 
         <!-- upper Section -->
 
           <!-- Recipe name -->
-          <div class="pure-u-1 pure-u-md-5-5 recipe-title">
+          <div class="full">
               <h1>{{recipe-name}}</h1>
               <hr />
           </div>
           <!-- Recipe name end -->
 
-          <div class="pure-u-1 pure-u-md-5-5 recipe-categories">
+          <div class="full recipe-categories">
               {{#each categories}}
                   <span class="category">
                       <a href="#">{{this}}</a>
@@ -49,36 +49,33 @@
               {{/each}}
           </div>
 
-          <!-- Main Recipe Pic -->
-          <div class="pure-u-1 pure-u-md-2-5">
-            <div class="pure-g">
+          <div class="flex full two-800">
 
-              <div class="pure-u-1 pure-u-md-5-5">
-                <div class="recipe-title-img effect2 gallery" itemscope itemtype="http://schema.org/ImageGallery">
+            <!-- Main Recipe Pic -->
+            <div class="third-800 recipe-gallery">
+              <div class="recipe-title-img effect2" itemscope itemtype="http://schema.org/ImageGallery">
 
-                    <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
-                      <a href="{{recipe-image.src-full}}" itemprop="contentUrl" data-size="{{recipe-image.size}}">
-                        <img class="effect2 pure-img" src="{{recipe-image.src-thmb}}" itemprop="thumbnail" alt="{{recipe-image.dsc}}" />
-                      </a>
-                      <figcaption itemprop="caption description">{{{recipe-image.dsc}}}</figcaption>
-                    </figure>
+                  <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <a href="{{recipe-image.src-full}}" itemprop="contentUrl" data-size="{{recipe-image.size}}">
+                      <img class="effect2" src="{{recipe-image.src-thmb}}" itemprop="thumbnail" alt="{{recipe-image.dsc}}" />
+                    </a>
+                    <figcaption itemprop="caption description">{{{recipe-image.dsc}}}</figcaption>
+                  </figure>
 
-                </div>
               </div>
-
             </div>
-          </div>
-          <!-- Main Recipe Pic end -->
+            <!-- Main Recipe Pic end -->
 
-          <div class="pure-u-1 pure-u-md-3-5">
-          Infos
+            <div class="">
+              Infos
+            </div>
           </div>
         <!-- upper Section end-->
 
-          <div class="pure-g recipe">
-              <div class="pure-u-1 pure-u-md-2-5">
+          <div class="flex full two recipe">
+              <div class="full fourth-800">
                   <h4 id="zutaten">Zutaten</h4>
-                  <table class="pure-table">
+                  <table class="primary">
                       {{#each ingredients as |value key|}}
                           <tr>
                               <td><span class="ingredient">{{value.ingredient}}</span></td>
@@ -90,17 +87,16 @@
                       {{/each}}
                   </table>
               </div>
-              <div class="pure-u-1 pure-u-md-3-5">
+              <div class="full half-800">
                   {{{contents}}}
               </div>
           </div>
 
           <!-- Gallery -->
-          <div class="pure-u-1 pure-u-md-5-5 recipe-gallery">
+          <div class="full recipe-gallery">
             <h4>Weitere Bilder</h4>
-          </div>
 
-          <div class="pure-u-1 pure-u-md-5-5 recipe-gallery-content gallery">
+          <div class="recipe-gallery-content gallery">
 
             {{#each recipe-gallery as | image |}}
                 <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
@@ -112,10 +108,11 @@
             {{/each}}
 
           </div>
+          </div>
           <!-- Gallery end -->
 
           <!-- Footer -->
-          <div class="pure-u-1 recipe-footer">
+          <div class="full recipe-footer">
               <a href="javascript:window.print()">
                   <i class="fa fa-print fa-2x recipe-icon" aria-hidden="true"></i>
               </a>
@@ -124,8 +121,9 @@
       </div>
       <!-- end Main -->
 
-      <!-- Helper Grid for large Screensize -->
-      <div class="pure-u-md-1-5"></div>
+      <!-- helper div right -->
+        <div class=""></div>
+      <!-- helper div right -->
 
   </div>
 
@@ -137,30 +135,6 @@
   <script type="text/javascript" src="js/photoswipe.min.js"></script>
   <script type="text/javascript" src="js/photoswipe-ui-default.min.js"></script>
   <script type="text/javascript" src="js/pswp-init.js"></script>
-  <script type="text/javascript">
-    (function(window, document){
-      var menu = document.getElementById('menu');
-      var menuLink = document.getElementById('menuLink');
-
-      menuLink.onclick = function(e) {
-        console.log('push');
-        e.preventDefault();
-
-        var classes = menu.className.split(/\s+/);
-
-        if(classes.indexOf('hidden') !== -1) {
-          classes.splice(classes.indexOf('hidden'),1);
-          menu.className = classes.join(' ');
-          console.log(classes);
-        } else if(classes.indexOf('hidden') === -1) {
-          classes.push('hidden');
-          menu.className = classes.join(' ');
-          console.log(classes);
-        }
-
-      };
-    })(this, this.document);
-  </script>
 
 </body>
 </html>

@@ -96,18 +96,18 @@
           <div class="full recipe-gallery">
             <h4>Weitere Bilder</h4>
 
-          <div class="recipe-gallery-content gallery">
+            <div class="recipe-gallery-content gallery">
 
-            {{#each recipe-gallery as | image |}}
-                <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
-                  <a href="{{image.src-full}}" itemprop="contentUrl" data-size="{{image.size}}">
-                    <img class="gallery-img" src="{{image.src-thmb}}" itemprop="thumbnail" alt="{{image.dsc}}" />
-                  </a>
-                  <figcaption itemprop="caption description"><h4>{{{image.dsc}}}</h4></figcaption>
-                </figure>
-            {{/each}}
+              {{#each recipe-gallery as | image |}}
+                  <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <a href="{{image.src-full}}" itemprop="contentUrl" data-size="{{image.size}}">
+                      <img class="gallery-img" src="{{image.src-thmb}}" itemprop="thumbnail" alt="{{image.dsc}}" />
+                    </a>
+                    <figcaption itemprop="caption description"><h4>{{{image.dsc}}}</h4></figcaption>
+                  </figure>
+              {{/each}}
 
-          </div>
+            </div>
           </div>
           <!-- Gallery end -->
 
